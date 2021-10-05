@@ -13,7 +13,7 @@ var compareDate = function (obj1, obj2) {
 
 module.exports = async () => {
   const paths = await globby(["**.md"], {
-    ignore: ["node_modules"],
+    ignore: ["node_modules", "README.md"],
   });
   let pages = await Promise.all(
     paths.map(async (item) => {
