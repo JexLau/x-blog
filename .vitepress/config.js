@@ -1,8 +1,10 @@
 const getPages = require("./utils/pages");
+const { BASE } = require("../constant/key");
 
 async function getConfig() {
   const config = {
-    base: '/blog',
+    base: BASE,
+    dest: "public",
     head: [
       [
         "meta",
@@ -33,7 +35,6 @@ async function getConfig() {
         { text: "📂 分类 ", link: "/tags" },
       ],
     },
-    dest: "public",
   };
 
   return config;

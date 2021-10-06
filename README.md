@@ -2,6 +2,8 @@
 
 ## 效果预览
 
+https://jexlau.github.io/blog/
+
 ## 安装
 
 ```bash
@@ -19,4 +21,4 @@ yarn build
 ```
 
 ## 鸣谢
-本项目采用 @Moking1997 搭建的[vitepress-blog](https://github.com/Moking1997/vitepress-blog)来进行的修改
+本项目采用 @Moking1997 搭建的 [vitepress-blog](https://github.com/Moking1997/vitepress-blog) 基础上进行修改

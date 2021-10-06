@@ -1,6 +1,7 @@
 const fs = require("mz/fs");
 const globby = require("globby");
 const matter = require("gray-matter");
+const { BASE } = require("../../constant/key");
 
 function rTime(date) {
   const json_date = new Date(date).toJSON();
@@ -22,7 +23,7 @@ module.exports = async () => {
       data.date = rTime(data.date);
       return {
         frontMatter: data,
-        regularPath: `/${item.replace(".md", ".html")}`,
+        regularPath: `${BASE}/${item.replace(".md", ".html")}`,
         relativePath: item,
       };
     })

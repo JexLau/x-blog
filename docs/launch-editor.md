@@ -1,14 +1,12 @@
 ---
-date: 2021-09-17
+date: 2021-08-11
 title: 纪年 |【第一期】launch-editor 源码解读记录
 tags:
   - 源码
 describe: launch-editor 源码解读记录
 ---
 
-> 川哥的源码解读文章：https://juejin.cn/post/6959348263547830280
->
-> 🌹 非常感谢川哥组织的源码阅读活动
+> 【若川】launch-editor 源码解读：https://juejin.cn/post/6959348263547830280
 
 ## 1. 解读前的准备
 
@@ -47,12 +45,10 @@ describe: launch-editor 源码解读记录
 
 打开 vue3-project 目录的 package.json，点击调试，选择 serve。这一步操作，使得我们以 debug 的形式，运行了 **vue-cli-service serve** 这个命令。
 
-![img](https://cdn.nlark.com/yuque/0/2021/png/1105483/1628095692086-95e1a85a-ba77-4c2d-ae2d-b44caa1dbd5d.png)
-
+![img](./images/launch-editor0.png)
 
 
 跟着文章实现到这里的时候，我有点懵逼，因为我不知道接下来为什么突然要搜索【launch-editor-middleware】这个库。
-
 
 
 直到我再次通读一遍文章，发现川哥前面有提到 vue-devtools 的 [Open component in editor](https://github.com/vuejs/devtools/blob/legacy/docs/open-in-editor.md) 这个文档，这个文档里面描述了引用了【launch-editor-middleware】这个库来实现打开文档的功能。而我之前先入为主地以为，这期是解读 vue-devtools 的源码，其实这只是解读实现打开文档功能的源码而已。
@@ -71,14 +67,8 @@ describe: launch-editor 源码解读记录
 
 下图【launch-editor-middleware】的源码，在这份源码中我们能很轻易地分析出，最终运行的是 launch 函数，我们可以这这里打一个断点，然后进入到【launch-editor】的源码，实际运行的是 **launchEditor** 函数。
 
-
-
-![img](https://cdn.nlark.com/yuque/0/2021/png/1105483/1628101741786-226fcf81-7086-4747-810d-a0580cd91b0f.png)
-
-
-
-![img](https://cdn.nlark.com/yuque/0/2021/png/1105483/1628102430457-63442279-5041-4cc1-b2b3-7393ce5f56b0.png)
-
+![img](./images/launch-editor2.png)
+![img](./images/launch-editor3.png)
 
 
 粗略看一遍 launchEditor 函数，发现它实际上是做了四件事：
@@ -124,7 +114,7 @@ if (process.platform === 'win32') {
 
 点击 vue-devtools 的按钮时，我们会发现它发送了一个请求：http://localhost:8080/__open-in-editor?file=src/components/HelloWorld.vue
 
-![img](https://cdn.nlark.com/yuque/0/2021/png/1105483/1628130093973-5b95e0a6-c7ad-4b17-a2b9-61e76ad87a07.png)
+![img](./images/launch-editor4.png)
 
 
 

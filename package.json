@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "deploy": "deploy.sh",
     "build": "vitepress build",
     "dev": "vitepress"
   },
