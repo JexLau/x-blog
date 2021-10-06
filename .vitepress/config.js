@@ -2,6 +2,7 @@ const getPages = require("./utils/pages");
 
 async function getConfig() {
   const config = {
+    base: '/blog',
     head: [
       [
         "meta",
