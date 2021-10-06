@@ -1,5 +1,5 @@
 const getPages = require("./utils/pages");
-import { Build } from './build'
+const { Build } = require("./build");
 async function getConfig() {
   let config = {
     head: [
@@ -16,15 +16,18 @@ async function getConfig() {
       // 引入 Gitalk
       [
         "link",
-        { rel: "stylesheet", href: "https://lib.baomitu.com/gitalk/1.7.0/gitalk.min.css" },
+        {
+          rel: "stylesheet",
+          href: "https://lib.baomitu.com/gitalk/1.7.0/gitalk.min.css",
+        },
       ],
       ["script", { src: "https://lib.baomitu.com/gitalk/1.7.0/gitalk.min.js" }],
-      ["script", { src: "https://lib.baomitu.com/axios/0.21.1/axios.js" }]
+      ["script", { src: "https://lib.baomitu.com/axios/0.21.1/axios.js" }],
     ],
     title: "纪年",
     themeConfig: {
-      displayAllHeaders:true,
-      logo: '/favicon.ico',
+      displayAllHeaders: true,
+      logo: "/favicon.ico",
       pages: await getPages(),
       author: "纪年",
       search: true,
@@ -36,7 +39,7 @@ async function getConfig() {
       ],
     },
     dest: "public",
-    base: Build()
+    base: Build(),
   };
   return config;
 }
