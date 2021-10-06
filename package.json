@@ -4,9 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "deploy": "deploy.sh",
-    "build": "vitepress build",
-    "dev": "vitepress"
+    "build": "npx vitepress build",
+    "dev": "npx vitepress",
+    "deploy": "bash deploy.sh"
   },
   "devDependencies": {
     "globby": "^11.0.1",
@@ -15,6 +15,5 @@
     "vitepress": "^0.7.2"
   },
   "dependencies": {
-    "gitalk": "^1.7.0"
   }
 }

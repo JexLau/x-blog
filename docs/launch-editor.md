@@ -45,7 +45,7 @@ describe: launch-editor 源码解读记录
 
 打开 vue3-project 目录的 package.json，点击调试，选择 serve。这一步操作，使得我们以 debug 的形式，运行了 **vue-cli-service serve** 这个命令。
 
-![img](./images/launch-editor0.png)
+![](./launch-editor0.png)
 
 
 跟着文章实现到这里的时候，我有点懵逼，因为我不知道接下来为什么突然要搜索【launch-editor-middleware】这个库。
@@ -67,8 +67,8 @@ describe: launch-editor 源码解读记录
 
 下图【launch-editor-middleware】的源码，在这份源码中我们能很轻易地分析出，最终运行的是 launch 函数，我们可以这这里打一个断点，然后进入到【launch-editor】的源码，实际运行的是 **launchEditor** 函数。
 
-![img](./images/launch-editor2.png)
-![img](./images/launch-editor3.png)
+![](./launch-editor1.png)
+![](./launch-editor2.png)
 
 
 粗略看一遍 launchEditor 函数，发现它实际上是做了四件事：
@@ -114,7 +114,7 @@ if (process.platform === 'win32') {
 
 点击 vue-devtools 的按钮时，我们会发现它发送了一个请求：http://localhost:8080/__open-in-editor?file=src/components/HelloWorld.vue
 
-![img](./images/launch-editor4.png)
+![](./launch-editor3.png)
 
 
 

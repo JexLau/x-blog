@@ -28,7 +28,7 @@ describe: 浅析 co 源码
 
 说到异步编程，我们很容易想到还有 promise，async 和 await。它们有什么区别呢？先看看 JS 异步编程进化史：callback -> promise -> generator -> async + await
 
-![JS 异步编程](./images/co0.png)
+![JS 异步编程](./co0.png)
 
 再看看它们语法上的差异：
 

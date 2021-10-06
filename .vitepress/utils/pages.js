@@ -1,11 +1,11 @@
 const fs = require("mz/fs");
 const globby = require("globby");
 const matter = require("gray-matter");
-const { BASE } = require("../../constant/key");
 
 function rTime(date) {
   const json_date = new Date(date).toJSON();
-  return json_date.split("T")[0];
+  const result = json_date.split("T")[0]
+  return result;
 }
 
 var compareDate = function (obj1, obj2) {
@@ -23,7 +23,7 @@ module.exports = async () => {
       data.date = rTime(data.date);
       return {
         frontMatter: data,
-        regularPath: `${BASE}/${item.replace(".md", ".html")}`,
+        regularPath: `/${item.replace(".md", ".html")}`,
         relativePath: item,
       };
     })
@@ -31,6 +31,5 @@ module.exports = async () => {
   pages = pages.filter((item) => !item.frontMatter.page);
 
   pages.sort(compareDate);
-
   return pages;
 };

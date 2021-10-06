@@ -1,10 +1,6 @@
 const getPages = require("./utils/pages");
-const { BASE } = require("../constant/key");
-
 async function getConfig() {
-  const config = {
-    base: BASE,
-    dest: "public",
+  let config = {
     head: [
       [
         "meta",
@@ -14,29 +10,33 @@ async function getConfig() {
             "width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no",
         },
       ],
-      ["meta", { name: "keywords", content: "纪年的个人博客" }],
+      ["meta", { name: "keywords", content: "纪年" }],
       ["link", { rel: "icon", href: "/favicon.ico" }],
       // 引入 Gitalk
       [
         "link",
-        { rel: "stylesheet", href: "https://unpkg.com/gitalk/dist/gitalk.css" },
+        { rel: "stylesheet", href: "https://lib.baomitu.com/gitalk/1.7.0/gitalk.min.css" },
       ],
-      ["script", { src: "https://unpkg.com/gitalk/dist/gitalk.min.js" }],
+      ["script", { src: "https://lib.baomitu.com/gitalk/1.7.0/gitalk.min.js" }],
+      ["script", { src: "https://lib.baomitu.com/axios/0.21.1/axios.js" }]
     ],
     title: "纪年",
     themeConfig: {
+      displayAllHeaders:true,
+      logo: '/favicon.ico',
       pages: await getPages(),
-      logo: "/favicon.ico",
       author: "纪年",
       search: true,
       nav: [
-        { text: "🏠 首页 ", link: "/" },
-        { text: "📅 归档 ", link: "/docs" },
-        { text: "📂 分类 ", link: "/tags" },
+        { text: "🏠 首页", link: "/" },
+        { text: "📅 归档", link: "/more/docs" },
+        { text: "📂 分类", link: "/more/tags" },
+        { text: "👫 友情链接", link: "/more/Friendship" },
       ],
     },
+    dest: "public",
+    // base:'/blog/'
   };
-
   return config;
 }
 module.exports = getConfig();

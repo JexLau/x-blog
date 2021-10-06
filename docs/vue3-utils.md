@@ -40,7 +40,7 @@ Vue3 源码地址：`https://github.com/vuejs/vue-next`
 
 安装完依赖，直接运行`yarn build`就可以打包 Vue3 的项目代码了，打包的产物如下（以 shared 模块为例）：
 
-![打包后的产物](./images/vue3-utils0.png)
+![](./vue3-utils0.png)
 
 这里的 `cjs`，`esm` 是 JS 里用来实现【模块化】的不同规则，JS 的模块化标准还有 `amd`，`umd`，`iife`。
 

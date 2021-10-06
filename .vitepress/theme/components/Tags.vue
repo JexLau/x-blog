@@ -2,13 +2,12 @@
   <div class="header">{{ selectTag }}</div>
   <a
     v-show="!article.frontMatter.home"
-    :href="article.regularPath || ''"
+    :href=" base + article.regularPath || ''"
     v-for="(article, el) in data[selectTag]"
     :key="el"
     class="article"
   >
     <div class="title">
-      <div class="title-o"></div>
       {{ article.frontMatter.title || "" }}
     </div>
     <div class="date">{{ article.frontMatter.date.slice(5) || "" }}</div>
@@ -19,6 +18,7 @@
       @click="toggleTag(key)"
       v-for="(item, key, index) in data"
       class="tag"
+      :key="index + key"
     >
       {{ key }}
     </span>
@@ -28,6 +28,8 @@
 <script>
   import { defineComponent, computed, watch, ref } from "vue";
   import { withBase, initTags } from "../../theme-default/utils";
+  import { Build } from '../../build'
+
   import {
     usePageData,
     useSiteData,
@@ -44,20 +46,21 @@
       const toggleTag = (tag) => {
         selectTag.value = tag;
       };
-
+      const base = Build()
       return {
         data,
         route,
         toggleTag,
         selectTag,
+        base
       };
-    },
+    }
   });
 </script>
 
 <style scoped>
   .header {
-    color: #353535;
+    color: var(--text-color);
     font-size: 2rem;
     font-weight: 600;
     margin: 1rem 0;
@@ -71,14 +74,27 @@
   }
   .tag {
     display: inline-block;
-    padding: 4px 16px;
+    position: relative;
+    padding: 4px 20px;
+    padding-right: 10px;
     margin: 0 16px 12px 0;
     font-size: 14px;
     line-height: 25px;
-    background-color: #fafafa;
+    background-color:rgb(33, 150, 243,0.5);
     transition: 0.4s;
-    color: #4a9ae1;
+    color: #fff;
     cursor: pointer;
+    border-radius: 33px 0 0 33px;
+  }
+   .tag::before {
+    content: '';
+    position: absolute;
+    width: 5px;
+    margin-top: 10px;
+    margin-left: -15px;
+    height: 5px;
+    background: #fff;
+    border-radius: 50%;
   }
   .year {
     padding: 15px 0;
@@ -87,7 +103,7 @@
     color: var(--text-color);
   }
   .article {
-    padding: 2px 70px;
+    padding: 2px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -102,14 +118,6 @@
   }
   .article:hover {
     text-decoration: none;
-  }
-  .title-o {
-    display: inline-block;
-    margin-right: 10px;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: #353535;
   }
   .title {
     color: #4a9ae1;
@@ -134,8 +142,6 @@
       overflow: hidden;
       text-overflow:ellipsis;
       white-space: nowrap;
-      width: 18em;
     }
   }
 </style>
->

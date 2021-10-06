@@ -1,19 +1,17 @@
 <template>
   <div class="">
-    <div class="years" v-for="(year, index) in data">
+    <div class="years" v-for="(year, index) in data" :key="index + year">
       <div class="year">
         {{ year[0].frontMatter.date.split("-")[0] }}
       </div>
-
       <a
         v-show="!article.frontMatter.home"
-        :href="article.regularPath || ''"
+        :href=" base + article.regularPath || ''"
         v-for="(article, el) in year"
         :key="el"
         class="article"
       >
         <div class="title">
-          <div class="title-o"></div>
           {{ article.frontMatter.title || "" }}
         </div>
         <div class="date">{{ article.frontMatter.date.slice(5) || "" }}</div>
@@ -26,6 +24,7 @@
   import { defineComponent, computed } from "vue";
   import { withBase, useYearSort } from "../../theme-default/utils";
   import { usePageData, useSiteData } from "vitepress";
+  import { Build } from '../../build'
 
   export default defineComponent({
     setup() {
@@ -35,10 +34,12 @@
         useYearSort(siteData.value.themeConfig.pages)
       );
 
+      const base = Build()
       return {
         data,
+        base
       };
-    },
+    }
   });
 </script>
 
@@ -53,25 +54,19 @@
   .year {
     padding: 15px 0;
     font-size: 1.3rem;
+    border-bottom: 1px solid #ccc;
     font-weight: 600;
     color: var(--text-color);
   }
   .article {
-    padding: 2px 25px;
+    padding: 2px;
+    margin: 10px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  .title-o {
-    display: inline-block;
-    margin-right: 10px;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: #353535;
-  }
   .title {
-    color: #4a9ae1;
+      color: var(--accent-color);
     font-size: 1.1rem;
   }
   .date {
@@ -94,8 +89,6 @@
       overflow: hidden;
       text-overflow:ellipsis;
       white-space: nowrap;
-      width: 18em;
     }
   }
 </style>
->
