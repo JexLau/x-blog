@@ -1,4 +1,5 @@
 const getPages = require("./utils/pages");
+import { Build } from './build'
 async function getConfig() {
   let config = {
     head: [
@@ -35,7 +36,7 @@ async function getConfig() {
       ],
     },
     dest: "public",
-    // base:'/blog/'
+    base: Build()
   };
   return config;
 }

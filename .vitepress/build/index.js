@@ -1,4 +1,4 @@
 const type = 'dev'
 export function Build(){
-    return type === 'build' ? '/blog' : ''
+    return type === 'build' ? '/blog' : undefined
 }
