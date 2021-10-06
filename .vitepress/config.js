@@ -1,5 +1,5 @@
 const getPages = require("./utils/pages");
-const { Build } = require("./build");
+
 async function getConfig() {
   let config = {
     head: [
@@ -39,7 +39,7 @@ async function getConfig() {
       ],
     },
     dest: "public",
-    base: Build(),
+    // base: "/blog",
   };
   return config;
 }
