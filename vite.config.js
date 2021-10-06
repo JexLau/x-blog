@@ -1,3 +1,4 @@
+const { BASE } = require("./constant/key");
 export default defineConfig({
-  base: "/blog"
+  base: BASE,
 });
