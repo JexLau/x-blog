@@ -168,6 +168,7 @@ export default {
 .card {
   width: 300px;
   max-width: 300px;
+  height: 600px;
   border-radius: 12px;
   background: var(--bg-color);
   border: 1px solid var(--border-color);

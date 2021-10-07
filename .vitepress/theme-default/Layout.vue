@@ -22,7 +22,6 @@
     <div class="home-bg" v-if="enableHome">
       <div class="content-bg">
         <h1>
-          JexLau
           <p>人间总有一两风 填我十万八千梦</p>
         </h1>
       </div>
