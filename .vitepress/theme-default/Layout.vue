@@ -1,7 +1,6 @@
 <template>
   <div id="containerColor" :class="[pageClasses, themeMode]">
     <header class="navbar" v-if="showNavbar">
-      <!-- <div class="body-bg" style="background: url(&quot;https://cdn.jsdelivr.net/gh/xugaoyi/image_store/blog/20200507175828.jpeg&quot;) center center / cover no-repeat;opacity: 0.5;position: fixed;left: 0;top: 0;z-index: -999999;height: 100vh;width: 100vw;transition: background .5s;"></div> -->
       <NavBar>
         <template #search>
           <slot name="navbar-search" />

@@ -43,7 +43,7 @@ import { defineComponent, computed, reactive } from "vue";
 import NavBarLink from "./NavBarLink.vue";
 import { withBase, parseMarkdownList } from "../utils";
 import { usePageData, useSiteData } from "vitepress";
-import { Build } from "../../build";
+import { base } from "../../build";
 import PageEdit from "./PageEdit.vue";
 
 export default defineComponent({
@@ -63,7 +63,6 @@ export default defineComponent({
     const heroImageSrc = computed(() => withBase(data.value.heroImage));
     const siteTitle = computed(() => siteData.value.title);
     const siteDescription = computed(() => siteData.value.description);
-    const base = Build();
 
     // 文章总数据
     let totalData = computed(() =>

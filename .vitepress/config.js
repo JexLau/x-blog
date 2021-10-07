@@ -1,4 +1,5 @@
 const getPages = require("./utils/pages");
+const env = process.env.NODE_ENV === "development" ? "" : "/blog"
 
 async function getConfig() {
   let config = {
@@ -39,7 +40,7 @@ async function getConfig() {
       ],
     },
     dest: "public",
-    // base: "/blog",
+    base: env,
   };
   return config;
 }

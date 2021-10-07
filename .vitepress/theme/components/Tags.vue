@@ -28,7 +28,7 @@
 <script>
   import { defineComponent, computed, watch, ref } from "vue";
   import { withBase, initTags } from "../../theme-default/utils";
-  import { Build } from '../../build'
+  import { base } from '../../build'
 
   import {
     usePageData,
@@ -46,7 +46,6 @@
       const toggleTag = (tag) => {
         selectTag.value = tag;
       };
-      const base = Build()
       return {
         data,
         route,

@@ -24,7 +24,7 @@
   import { defineComponent, computed } from "vue";
   import { withBase, useYearSort } from "../../theme-default/utils";
   import { usePageData, useSiteData } from "vitepress";
-  import { Build } from '../../build'
+  import { base } from '../../build'
 
   export default defineComponent({
     setup() {
@@ -34,7 +34,6 @@
         useYearSort(siteData.value.themeConfig.pages)
       );
 
-      const base = Build()
       return {
         data,
         base

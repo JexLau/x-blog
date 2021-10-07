@@ -1,4 +1,1 @@
-const type = 'dev'
-export function Build(){
-    return type === 'build' ? '/blog' : ""
-}
+export const base = process.env.NODE_ENV === "development" ? "" : "/blog";
