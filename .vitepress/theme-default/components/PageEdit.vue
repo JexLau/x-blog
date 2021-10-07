@@ -22,7 +22,7 @@ export default {
   setup() {
     const data = {
       platform: [
-        { href: "https://juejin.cn/user/3034307824991006/posts", icon: juejin },
+        { href: "https://juejin.cn/user/3175045313607534", icon: juejin },
       ]
     }
     return {
