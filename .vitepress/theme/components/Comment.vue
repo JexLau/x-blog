@@ -10,14 +10,14 @@
         // 是否开启
         enable: true,
         // clientID
-        clientID: "a6598e156cf30077f530",
+        clientID: "f9ec9d628144bf9c9507",
         // clientSecret
-        clientSecret: "98937aee37a93913b415f2688ad92d351c5e0c52",
+        clientSecret: "557e9a333c6dfd8a0563e04875504bfd055cf391",
         // 评论项目名
         repo: 'blog-comments',
-        owner: 'crazymryan',
-        admin: ['crazymryan'],
-        githubID:'crazymryan',
+        owner: 'JexLau',
+        admin: ['JexLau'],
+        githubID:'JexLau',
         id: decodeURI(window.location.pathname),
         language:'zh-CN',
         distractionFreeMode: true

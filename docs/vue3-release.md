@@ -209,3 +209,6 @@ async function runParallel(maxConcurrency, source, iteratorFn) {
 逻辑代码基本与 Vue3 的 release.js 和 build.js 一致，去掉了一些没必要的代码，比如单元测试和一些环境判断。还修改了一下 rollup.config.js 的配置，感觉用起来确实比 lerna 好用一些。最终效果如下：
 
 ![](./vue3-release0.png)
+
+
+<Comment/>

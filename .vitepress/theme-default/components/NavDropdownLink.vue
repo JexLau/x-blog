@@ -21,32 +21,19 @@
             <NavBarLink
               :item="childSubItem"
               @focusout="
-                  isLastItemOfArray(childSubItem, subItem.items) &&
-                    isLastItemOfArray(subItem, item.items) &&
-                    setOpen(false)
-                "
+              isLastItemOfArray(childSubItem, subItem.items) &&
+                isLastItemOfArray(subItem, item.items) &&
+                setOpen(false)
+              "
             />
           </li>
         </ul>
-
         <NavBarLink
           v-else
           :item="subItem"
           @focusout="isLastItemOfArray(subItem, item.items) && setOpen(false)"
         />
       </li>
-<!-- 
-      <li><a 
-        href="https://github.com/CrazyMrYan" 
-        class="nav-link"
-        style="border-bottom: none;display: flex; align-items: center; margin-left: 10px;padding: 0px 1.5rem 0px .8rem;">
-        <img 
-          class="my-svg" 
-          src="https://github.githubassets.com/images/icons/emoji/octocat.png" 
-          style="width:1rem; height: 1rem;"
-          />
-          老严 de GitHub
-      </a></li> -->
     </ul>
   </div>
 </template>
@@ -133,7 +120,7 @@
 }
 
 .dropdown-wrapper .nav-dropdown .dropdown-item a.active::after {
-  content: '';
+  content: "";
   width: 0;
   height: 0;
   border-left: 5px solid var(--accent-color);
@@ -225,7 +212,7 @@
     font-size: 0.9rem;
   }
 }
-.nav-link:hover{
+.nav-link:hover {
   color: var(--accent-color);
 }
 </style>
