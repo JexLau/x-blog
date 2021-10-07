@@ -10,9 +10,9 @@
         // 是否开启
         enable: true,
         // clientID
-        clientID: "f9ec9d628144bf9c9507",
+        clientID: "a8296833d44633072517",
         // clientSecret
-        clientSecret: "557e9a333c6dfd8a0563e04875504bfd055cf391",
+        clientSecret: "8af7efce84642c54ce9e6206fd1da2b01952a3d1",
         // 评论项目名
         repo: 'blog-comments',
         owner: 'JexLau',
