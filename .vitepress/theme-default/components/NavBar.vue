@@ -1,5 +1,6 @@
 <template>
-  <a
+  <div>
+    <!-- <a
     class="title"
     :aria-label="$site.title + ', back to home'"
     :href="$site.base"
@@ -11,13 +12,28 @@
       alt="logo"
     />
     <span>{{ $site.title }}</span>
-  </a>
-  <div class="flex-grow"></div>
-  <NavBarLinks class="hide-mobile" />
-  <slot name="search" />
+  </a> -->
+    <div class="flex-grow"></div>
+    <NavBarLinks class="hide-mobile" />
+    <slot name="search" />
+  </div>
+
 </template>
 
-<script src="./NavBar"></script>
+
+<script>
+import { withBase } from '../utils';
+import NavBarLinks from './NavBarLinks.vue';
+
+export default {
+    components: {
+        NavBarLinks
+    },
+    setup() {
+        return { withBase };
+    }
+};
+</script>
 
 <style>
 .title {
@@ -36,9 +52,11 @@
   vertical-align: bottom;
   border-radius: 10px;
 }
-.hide-mobile{
+
+.hide-mobile {
   margin-right: 5rem;
 }
+
 @media screen and (max-width: 719px) {
   .hide-mobile {
     display: none;

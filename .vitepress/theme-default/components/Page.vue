@@ -36,12 +36,12 @@
 <script>
 import NextAndPrevLinks from "./NextAndPrevLinks.vue";
 import PageEdit from "./PageEdit.vue";
-import { usePageData } from "vitepress";
+import { useData } from "vitepress";
 import { onMounted, reactive } from "vue";
 export default {
   components: { NextAndPrevLinks, PageEdit },
   setup() {
-    const pageData = usePageData();
+    const {page: pageData} = useData();
     return {
       pageData,
     };

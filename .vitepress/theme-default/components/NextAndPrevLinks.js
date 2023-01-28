@@ -1,11 +1,10 @@
 import { computed } from 'vue';
-import { usePageData, useSiteData } from 'vitepress';
+import { useData } from 'vitepress';
 export default {
     setup() {
-        const pageData = usePageData();
+        const {page:pageData, site: siteData} = useData();
         // TODO: could this be useSiteData<DefaultTheme.Config> or is the siteData
         // resolved and has a different structure?
-        const siteData = useSiteData();
         const resolveLink = (targetLink) => {
             let target;
             Object.keys(siteData.value.themeConfig.sidebar).some((k) => {

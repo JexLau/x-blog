@@ -1,10 +1,11 @@
-import { useSiteData } from "vitepress";
+import { useData } from 'vitepress'
 export const hashRE = /#.*$/;
 export const extRE = /\.(md|html)$/;
 export const endingSlashRE = /\/$/;
 export const outboundRE = /^[a-z]+:/i;
 export function withBase(path) {
-  return (useSiteData().value.base + path).replace(/\/+/g, "/");
+  const { site } = useData();
+  return (site.value.base + path).replace(/\/+/g, "/");
 }
 export function isExternal(path) {
   return outboundRE.test(path);

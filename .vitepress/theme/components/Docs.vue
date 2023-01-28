@@ -4,13 +4,8 @@
       <div class="year">
         {{ year[0].frontMatter.date.split("-")[0] }}
       </div>
-      <a
-        v-show="!article.frontMatter.home"
-        :href=" base + article.regularPath || ''"
-        v-for="(article, el) in year"
-        :key="el"
-        class="article"
-      >
+      <a v-show="!article.frontMatter.home" :href="base + article.regularPath || ''" v-for="(article, el) in year"
+        :key="el" class="article">
         <div class="title">
           {{ article.frontMatter.title || "" }}
         </div>
@@ -21,73 +16,80 @@
 </template>
 
 <script>
-  import { defineComponent, computed } from "vue";
-  import { withBase, useYearSort } from "../../theme-default/utils";
-  import { usePageData, useSiteData } from "vitepress";
-  import { base } from '../../build'
+import { defineComponent, computed } from "vue";
+import { withBase, useYearSort } from "../../theme-default/utils";
+import { useData } from 'vitepress'
+import { base } from '../../build'
 
-  export default defineComponent({
-    setup() {
-      const siteData = useSiteData();
+export default defineComponent({
+  setup() {
+    const { site: siteData, page, theme } = useData()
 
-      const data = computed(() =>
-        useYearSort(siteData.value.themeConfig.pages)
-      );
+    const data = computed(() =>
+      useYearSort(siteData.value.themeConfig.pages)
+    );
 
-      return {
-        data,
-        base
-      };
-    }
-  });
+    return {
+      data,
+      base
+    };
+  }
+});
 </script>
 
 <style scoped>
+.header {
+  color: #353535;
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.year {
+  padding: 15px 0;
+  font-size: 1.3rem;
+  border-bottom: 1px solid #ccc;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.article {
+  padding: 2px;
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  color: var(--accent-color);
+  font-size: 1.1rem;
+}
+
+.date {
+  color: #ccc;
+  font-size: 1rem;
+}
+
+@media screen and (max-width: 700px) {
   .header {
-    color: #353535;
-    font-size: 2rem;
-    font-weight: 600;
-    margin: 1rem 0;
-    text-align: center;
+    font-size: 1.5rem;
   }
-  .year {
-    padding: 15px 0;
-    font-size: 1.3rem;
-    border-bottom: 1px solid #ccc;
-    font-weight: 600;
-    color: var(--text-color);
-  }
+
   .article {
     padding: 2px;
-    margin: 10px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
   }
+
+  .date,
   .title {
-      color: var(--accent-color);
-    font-size: 1.1rem;
+    font-size: 0.9rem;
   }
-  .date {
-    color: #ccc;
-    font-size: 1rem;
+
+  .title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
-  
-    @media screen and (max-width: 700px) {
-    .header {
-      font-size: 1.5rem;
-    }
-    .article {
-      padding: 2px;
-    }
-    .date,
-    .title {
-      font-size: 0.9rem;
-    }
-    .title{
-      overflow: hidden;
-      text-overflow:ellipsis;
-      white-space: nowrap;
-    }
-  }
+}
 </style>

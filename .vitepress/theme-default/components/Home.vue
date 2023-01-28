@@ -42,7 +42,7 @@
 import { defineComponent, computed, reactive } from "vue";
 import NavBarLink from "./NavBarLink.vue";
 import { withBase, parseMarkdownList } from "../utils";
-import { usePageData, useSiteData } from "vitepress";
+import { useData } from "vitepress";
 import { base } from "../../build";
 import PageEdit from "./PageEdit.vue";
 
@@ -52,8 +52,7 @@ export default defineComponent({
     PageEdit,
   },
   setup() {
-    const pageData = usePageData();
-    const siteData = useSiteData();
+    const {site: siteData, page: pageData} = useData();
     const data = computed(() => pageData.value.frontmatter);
     const actionLink = computed(() => ({
       link: data.value.actionLink,

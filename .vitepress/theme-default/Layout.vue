@@ -72,12 +72,7 @@ import Card from "../theme/components/Card.vue";
 import headImg from "../images/t.png";
 import codeImg from "../images/mycode.jpg";
 
-import {
-  useRoute,
-  usePageData,
-  useSiteData,
-  useSiteDataByRoute,
-} from "vitepress";
+import { useData, useRoute } from 'vitepress'
 
 export default {
   updated() {
@@ -138,17 +133,15 @@ export default {
   },
   setup() {
     const route = useRoute();
-    const pageData = usePageData();
-    const siteData = useSiteData();
-    const siteRouteData = useSiteDataByRoute();
+const { site: siteData, page: pageData, theme } = useData()
 
     const openSideBar = ref(false);
     const enableHome = computed(() => !!pageData.value.frontmatter.home);
 
     const showNavbar = computed(() => {
-      const { themeConfig } = siteRouteData.value;
+      const { themeConfig } = theme;
       const { frontmatter } = pageData.value;
-      if (frontmatter.navbar === false || themeConfig.navbar === false) {
+      if (frontmatter?.navbar === false || themeConfig?.navbar === false) {
         return false;
       }
       return (
@@ -161,14 +154,9 @@ export default {
 
     const showSidebar = computed(() => {
       const { frontmatter } = pageData.value;
-      const { themeConfig } = siteRouteData.value;
       return (
         !frontmatter.home &&
-        frontmatter.sidebar !== false &&
-        ((typeof themeConfig.sidebar === "object" &&
-          Object.keys(themeConfig.sidebar).length != 0) ||
-          (Array.isArray(themeConfig.sidebar) &&
-            themeConfig.sidebar.length != 0))
+        frontmatter.sidebar !== false && theme.value.nav.length != 0
       );
     });
 

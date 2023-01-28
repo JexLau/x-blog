@@ -1,4 +1,4 @@
-import { usePageData, useRoute, useSiteDataByRoute, useSiteData } from 'vitepress';
+import { useRoute, useData } from 'vitepress';
 import { computed, h } from 'vue';
 import { isActive, joinUrl, getPathDirName } from '../utils';
 import { useActiveSidebarLinks } from '../composables/activeSidebarLink';
@@ -6,8 +6,7 @@ import NavBarLinks from './NavBarLinks.vue';
 const SideBarItem = (props) => {
     const { item: { link: relLink, text, children } } = props;
     const route = useRoute();
-    const pageData = usePageData();
-    const siteData = useSiteData();
+    const { site: siteData, page: pageData } = useData();
     const link = resolveLink(siteData.value.base, relLink || '');
     const active = isActive(route, link);
     const headers = pageData.value.headers;
@@ -22,8 +21,7 @@ export default {
         SideBarItem
     },
     setup() {
-        const pageData = usePageData();
-        const siteData = useSiteDataByRoute();
+        const { site: siteData, page: pageData } = useData();
         const route = useRoute();
         useActiveSidebarLinks();
         return {
@@ -103,9 +101,9 @@ function resolveMultiSidebar(config, path, headers, depth) {
 function resolveLink(base, path) {
     return path
         ? // keep relative hash to the same page
-            path.startsWith('#')
-                ? path
-                : joinUrl(base, path)
+        path.startsWith('#')
+            ? path
+            : joinUrl(base, path)
         : undefined;
 }
 function createLink(active, text, link) {

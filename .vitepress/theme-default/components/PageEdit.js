@@ -1,7 +1,7 @@
 import { computed } from 'vue';
 import OutboundLink from './icons/OutboundLink.vue';
 import { endingSlashRE, isExternal } from '../utils';
-import { usePageData, useSiteData } from 'vitepress';
+import {  useData } from 'vitepress';
 function createEditLink(repo, docsRepo, docsDir, docsBranch, path) {
     const bitbucket = /bitbucket.org/;
     if (bitbucket.test(repo)) {
@@ -27,8 +27,7 @@ export default {
         OutboundLink
     },
     setup() {
-        const pageData = usePageData();
-        const siteData = useSiteData();
+        const {page: pageData, site: siteData} = useData();
         const editLink = computed(() => {
             const showEditLink = pageData.value.frontmatter.editLink == null
                 ? siteData.value.themeConfig.editLinks

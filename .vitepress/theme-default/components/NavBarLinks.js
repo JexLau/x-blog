@@ -1,6 +1,5 @@
 import { computed } from 'vue';
-import { useSiteData, useSiteDataByRoute, useRoute } from 'vitepress';
-import { inBrowser } from '/@app/utils';
+import { useData,useRoute } from "vitepress";
 import NavBarLink from './NavBarLink.vue';
 import NavDropdownLink from './NavDropdownLink.vue';
 const platforms = ['GitHub', 'GitLab', 'Bitbucket'].map((platform) => [platform, new RegExp(platform, 'i')]);
@@ -10,8 +9,7 @@ export default {
         NavDropdownLink
     },
     setup() {
-        const siteDataByRoute = useSiteDataByRoute();
-        const siteData = useSiteData();
+        const {site: siteData, theme: siteDataByRoute} = useData();
         const route = useRoute();
         const repoInfo = computed(() => {
             const theme = siteData.value.themeConfig;
@@ -42,7 +40,7 @@ export default {
                 return null;
             }
             // handle site base
-            const siteBase = inBrowser ? siteData.value.base : '/';
+            const siteBase = '/';
             const siteBaseWithoutSuffix = siteBase.endsWith('/')
                 ? siteBase.slice(0, -1)
                 : siteBase;
@@ -74,7 +72,7 @@ export default {
             };
         });
         const navData = computed(() => {
-            return siteDataByRoute.value.themeConfig.nav;
+            return siteDataByRoute.value.nav;
         });
         return {
             navData,
